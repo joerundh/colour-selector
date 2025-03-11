@@ -86,5 +86,6 @@ class LinearIntegralGauge {
 class ColourComponentGauge extends LinearIntegralGauge {
     constructor() {
         super(0, 255);
+        this.mainComponent.className = "colour-component-gauge";
     }
 }

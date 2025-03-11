@@ -1,6 +1,7 @@
 class ColourGauge {
     constructor() {
         this.mainComponent = document.createElement("div");
+        this.mainComponent.className = "colour-gauge";
 
         this.redGauge = new ColourComponentGauge();
         this.greenGauge = new ColourComponentGauge();

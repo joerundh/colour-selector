@@ -27,7 +27,7 @@ class LinearUnitIndicator {
         Create main component and add custom default style
         */
         this.mainComponent = document.createElement("div");
-        this.mainComponent.className = "gauge-indicator";
+        this.mainComponent.className = "linear-unit-indicator";
         this.mainComponent.style.margin = `0`;
         this.mainComponent.style.padding = `0`;
         this.mainComponent.style.boxSizing = "border-box";
@@ -44,7 +44,7 @@ class LinearUnitIndicator {
         Create adjustable component and add custom default style
         */
         this.adjustableComponent = document.createElement("div");
-        this.adjustableComponent.className = "gauge-indicator-adjustable";
+        this.adjustableComponent.className = "linear-indicator-adjustable";
         this.adjustableComponent.style.width = "0";
         this.adjustableComponent.style.height = "100vh";
         this.adjustableComponent.style.backgroundColor = "grey";
@@ -184,6 +184,8 @@ class LinearIndicator extends LinearUnitIndicator {
         super();
         this.min = min ? min : 0;
         this.max = max ? max : 100;
+
+        this.mainComponent.className = ""
     }
 
     getValue() {
