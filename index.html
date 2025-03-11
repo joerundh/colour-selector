@@ -18,8 +18,17 @@
                 <div class="linear-integral-gauge" data-min="0" data-max="255" data-label="Blue:" data-colour="#0000ff"></div>
             </div>
             <div class="colour-result" style="width: 300px; height: 300px;">
+                <script language="javascript">
+
+                    function copyHex() {
+                        navigator.clipboard.writeText(document.getElementById("colour-hex-display").innerText)
+                    }
+
+                </script>
                 <span class="colour-hex" id="colour-hex-display"></span>
-                <div class="copy-hex" onclick="navigator.clipboard.writeText(document.getElementById('colour-hex-display').innerText);"></div>
+                <div class="copy-hex">
+                    <img class="copy-hex-img" src="./css/copy-icon.svg" onclick="javascript:copyHex();">
+                </div>
             </div>
             <script language="javascript">
 
