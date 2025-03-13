@@ -1,12 +1,17 @@
 class LinearIntegralGauge {
+    /*
+    This combines the linear integral and writable textbox, and in combination
+    with a label represents an input which can adjust "phsycially" values
+    between a minimum and a maximum, which at any time is also displayed.
+    */
     constructor(min, max, label) {
         [ this.min, this.max ] = [ min ? min : 0, max ? max : 100 ];
 
         /*
-        Create component and set style
+        Create component and set (basic) style
         */
         this.mainComponent = document.createElement("div");
-        this.mainComponent.className = "linear-integral-gauge";
+        this.mainComponent.className = "linear-integral-gauge";     // Help for the extreme front-end
         this.mainComponent.style.width = "fit-content";
         this.mainComponent.style.height = "fit-content";
         this.mainComponent.style.padding = "10px";
@@ -45,6 +50,9 @@ class LinearIntegralGauge {
         Events
         */  
         this.indicator.mainComponent.addEventListener("adjusted", event => {
+            /*
+            When the indicator value is changed, send the value to the display
+            */
             if (this.display.isActive())
                 this.display.inputComponent.blur();
             this.display.setValue(this.indicator.getValue());
@@ -52,17 +60,23 @@ class LinearIntegralGauge {
         });
 
         this.display.mainComponent.addEventListener("valuechanged", event => {
+            /*
+            When the display gets a new value entered (while still editing),
+            send it to the indicator
+            */
             this.indicator.setValue(this.display.getValue());
             this.mainComponent.dispatchEvent(new CustomEvent("newvalue"));
         });
 
         this.display.mainComponent.addEventListener("valueset", event => {
+            /*
+            When the display gets a new value entered (and the input box vanishes),
+            send it to the indicator
+            */
             if (this.display.displayComponent.innerText === "")
                 this.display.setValue(this.min);
             this.mainComponent.dispatchEvent(new CustomEvent("newvalue"));
         });
-
-        this.indicator.setValue(50)
 
         /*
         Add to main component
@@ -80,12 +94,5 @@ class LinearIntegralGauge {
 
     getComponent() {
         return this.mainComponent;
-    }
-}
-
-class ColourComponentGauge extends LinearIntegralGauge {
-    constructor() {
-        super(0, 255);
-        this.mainComponent.className = "colour-component-gauge";
     }
 }

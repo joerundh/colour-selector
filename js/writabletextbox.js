@@ -37,6 +37,13 @@ class WritableTextbox {
         this.inputComponent.style.outline = "none";
         this.inputComponent.style.textAlign = "center";
 
+        /*
+        If the text box is clicked, it will be replaced by a input box. 
+
+        VERY SIMILAR to simply focusing on an input box. However, this was
+        originally supposed to be a DOUBLE-CLICK event listener. But apparantly,
+        front-enders consider a double-click to be too much effort.
+        */
         this.displayComponent.onclick = event => {
             if (event.button === 0) {
                 this.inputComponent.value = this.displayComponent.innerText;
@@ -46,6 +53,10 @@ class WritableTextbox {
             }
         };
 
+        /*
+        When the input box loses focus, it will be replaced by the textbox,
+        and the value considered set
+        */
         this.inputComponent.onblur = event => {
             setTimeout(() => {
                 this.displayComponent.innerText = this.inputComponent.value;
@@ -63,7 +74,11 @@ class WritableTextbox {
             has a selection (alt. where the cursor is); if the resulting value
             is higher than the maximum value, the maximum value is substituted;
             3. If Backspace is pressed, either the selection is deleted, or the 
-            character preceeding the cursor.
+            character preceeding the cursor is;
+            4. If Delete is pressed, either the selection is deleted, or the 
+            character following the cursor is;
+            5. If any other character key is pressed, it is ignored; vee vill only
+            akkzept nambers heer, ja? Genau, genau, yoah.
         */
         this.inputComponent.onkeydown = event => {
             let start = this.inputComponent.selectionStart;
@@ -126,6 +141,11 @@ class WritableTextbox {
                 Notify that the value has been changed
                 */
                 this.mainComponent.dispatchEvent(new CustomEvent("valuechanged"));
+            } else if (`${event.key}`.length === 1) {
+                /*
+                If any other symbol is attempted to be entered, it will quietly be ignored
+                */
+                event.preventDefault();
             }
             /*
             Set the value to the max value if the so-far entered value exceeds it
@@ -157,6 +177,9 @@ class WritableTextbox {
     }
 
     setValue(value) {
+        /*
+        Similar to getValue, only sort of reversed
+        */
         if (this.isActive())
             this.inputComponent.value = value;
         else
