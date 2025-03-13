@@ -185,7 +185,7 @@ class LinearIndicator extends LinearUnitIndicator {
         this.min = min ? min : 0;
         this.max = max ? max : 100;
 
-        this.mainComponent.className = ""
+        this.mainComponent.className = "linear-indicator";
     }
 
     getValue() {
@@ -201,7 +201,8 @@ class LinearIndicator extends LinearUnitIndicator {
 
 class LinearIntegralIndicator extends LinearIndicator {
     /*
-
+    Similar as before, but the values are now taken to be always integers,
+    using Math.round
     */
     constructor(min, max, width, height) {
         super(min, max, width, height);
