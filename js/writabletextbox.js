@@ -59,6 +59,8 @@ class WritableTextbox {
         */
         this.inputComponent.onblur = event => {
             setTimeout(() => {
+                if (this.inputComponent.value === "")
+                    this.inputComponent.value = "0";
                 this.displayComponent.innerText = this.inputComponent.value;
                 if (this.mainComponent.children[0] === this.inputComponent)
                     this.mainComponent.replaceChild(this.displayComponent, this.inputComponent);
