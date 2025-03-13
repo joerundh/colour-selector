@@ -98,8 +98,10 @@ class WritableTextbox {
 
             } else if (/^[0-9]$/.test(event.key)) {
                 event.preventDefault();
-                if (/^[0]*$/.test(this.inputComponent.value))
-                    // If the 
+                if (this.inputComponent.value === "0")
+                    /*
+                    Remove superfluous zero
+                    */
                     this.inputComponent.value = `${event.key}`;
                 else
                     this.inputComponent.value = `${this.inputComponent.value.slice(0, start)}${event.key}${this.inputComponent.value.slice(end)}`;
