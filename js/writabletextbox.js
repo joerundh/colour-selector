@@ -25,15 +25,19 @@ class WritableTextbox {
         this.displayComponent.style.width = "50px";
         this.displayComponent.style.height = "20px";
         this.displayComponent.style.fontSize = "16px";
-        this.displayComponent.style.border = "1px solid black";
+        this.displayComponent.style.border = "1px solid #909090";
         this.displayComponent.style.textAlign = "center";
+        this.displayComponent.style.backgroundColor = "black";
+        this.displayComponent.style.color = "#909090";
 
         this.inputComponent = document.createElement("input");
         this.inputComponent.style.width = "50px";
         this.inputComponent.style.height = "20px";
         this.inputComponent.style.fontSize = "16px";
         this.inputComponent.style.fontFamily = "Times New Roman";
-        this.inputComponent.style.border = "1px solid black";
+        this.inputComponent.style.border = "1px solid #909090";
+        this.inputComponent.style.backgroundColor = "black";
+        this.inputComponent.style.color = "#c0c0c0";
         this.inputComponent.style.outline = "none";
         this.inputComponent.style.textAlign = "center";
 

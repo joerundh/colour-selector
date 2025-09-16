@@ -26,6 +26,7 @@ class LinearIntegralGauge {
         this.labelComponent = document.createElement("div");
         this.labelComponent.className = "gauge-label";
         this.labelComponent.style.userSelect = "none";
+        this.labelComponent.style.color = "#909090";
         this.labelComponent.style.textAlign = "right";
         if (label) {
             this.labelComponent.innerText = label;
